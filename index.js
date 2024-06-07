@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || "1000";
 const passport = require("passport");
-const controllers = require("./controllers");
+// const controllers = require("./controllers");
 
 //Set up for easier form data parsing
 app.use(express.json());
@@ -17,3 +17,9 @@ dotenv.config();
 app.use(cors());
 
 //Initialize passport config
+app.use(passport.initialize());
+
+//server listening
+app.listen(port, () => {
+  console.log(`Listening on http://localhost:${port}`);
+});
