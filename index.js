@@ -4,8 +4,9 @@ const path = require("path");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const app = express();
-const port = process.env.PORT || "1000";
+const port = process.env.PORT || 1000;
 const passport = require("passport");
+const mongoose = require("mongoose");
 // const controllers = require("./controllers");
 
 //Set up for easier form data parsing
@@ -19,7 +20,21 @@ app.use(cors());
 //Initialize passport config
 app.use(passport.initialize());
 
-//server listening
-app.listen(port, () => {
-  console.log(`Listening on http://localhost:${port}`);
+//Mongoose DB connection
+const dbConnection = async () => {
+  try {
+    await mongoose.connect(process.env.DB_URL);
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("Failed to connect to MongoDB", error);
+    // Exit the process with failure
+    process.exit(1);
+  }
+};
+
+//Server listening only after db connection
+dbConnection().then(() => {
+  app.listen(port, () => {
+    console.log(`HumberOverFlow server running on http://localhost:${port}`);
+  });
 });
