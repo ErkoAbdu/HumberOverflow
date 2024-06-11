@@ -17,8 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 dotenv.config();
 app.use(cors());
 
-//Initialize passport config
+//Initialize passport config and setting it to require
 app.use(passport.initialize());
+require("./auth/config")(passport);
 
 //Mongoose DB connection
 const dbConnection = async () => {
