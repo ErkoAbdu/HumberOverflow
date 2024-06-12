@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 1000;
 const passport = require("passport");
 const mongoose = require("mongoose");
-// const controllers = require("./controllers");
+const controllers = require("./controllers");
 
 //Set up for easier form data parsing
 app.use(express.json());
@@ -20,6 +20,9 @@ app.use(cors());
 //Initialize passport config and setting it to require
 app.use(passport.initialize());
 require("./auth/config")(passport);
+
+//routes
+app.use("/api/users", controllers.userController);
 
 //Mongoose DB connection
 const dbConnection = async () => {
