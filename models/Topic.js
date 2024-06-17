@@ -9,6 +9,12 @@ const topicSchema = new Schema({
     required: true,
     unique: true,
   },
+  posts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
+    },
+  ],
 });
 
 //Model for Users and exporting to be used whereever needed

@@ -22,6 +22,18 @@ const userSchema = new Schema({
     select: false,
     minLength: 8,
   },
+  posts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
+    },
+  ],
+  topics: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Topic",
+    },
+  ],
 });
 
 //Model for Users and exporting to be used whereever needed

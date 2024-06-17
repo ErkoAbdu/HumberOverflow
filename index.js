@@ -23,7 +23,8 @@ require("./auth/config")(passport);
 
 //routes
 app.use("/api/users", controllers.userController);
-app.use("api/posts", controllers.postController);
+app.use("/api/posts", controllers.postController);
+app.use("/api/topics", controllers.topicController);
 
 //Mongoose DB connection
 const dbConnection = async () => {
