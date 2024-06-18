@@ -1,5 +1,4 @@
 # HumberOverflow
-Forum for Humber College students to discuss and interact with each other!
 
 ## Project Goal
 The aim of this project is to give students in the Humber College Web Development program a space to ask questions and intereact with one another in a judgment free zone. Using forums like stackoverflow can feel like a scary task as many users arent the nicest so this is an alternative for students!
